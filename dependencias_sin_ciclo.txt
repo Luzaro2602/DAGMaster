@@ -1,0 +1,6 @@
+compilar: editar guardar
+ejecutar: compilar
+editar:
+guardar:
+documentar: compilar
+limpiar:
