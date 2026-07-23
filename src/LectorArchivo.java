@@ -3,13 +3,18 @@ import java.io.FileReader;
 import java.io.IOException;
 
 /**
- * Encargada de leer el archivo de dependencias y poblar el grafo.
- * Separa la lógica de E/S de la lógica del grafo para mantener la modularidad.
+ * Esta clase solo se encarga de leer el archivo de dependencias y llenar el grafo.
+ * La separamos de la lógica del grafo para que sea más fácil modificar el formato
+ * de entrada sin tocar el resto del código.
+ * 
+ * Soporta líneas con comentarios (empiezan con #) y líneas vacías.
+ * También detecta auto-dependencias (una tarea que depende de sí misma) y muestra 
+ * una advertencia.
  */
 public class LectorArchivo {
 
     /**
-     * Lee el archivo línea por línea, parsea el formato "tarea: dep1 dep2 "
+     * Lee el archivo línea por línea, parsea el formato "tarea: dep1 dep2 ..."
      * y agrega las dependencias al grafo.
      * 
      * @param ruta ruta del archivo .txt (relativa o absoluta)
@@ -25,41 +30,50 @@ public class LectorArchivo {
 
             while ((linea = lector.readLine()) != null) {
                 numLinea++;
+                // Eliminar comentarios: todo lo que esté después de # se ignora
+                int posComentario = linea.indexOf('#');
+                if (posComentario != -1) {
+                    linea = linea.substring(0, posComentario);
+                }
                 linea = linea.trim();
                 if (linea.isEmpty()) {
-                    continue;   // Saltar líneas vacías
+                    continue;   // líneas vacías no aportan nada
                 }
 
-                // Separar tarea de sus dependencias usando ':' como delimitador
+                // Separar tarea y dependencias con ':'
                 String[] partes = linea.split(":");
                 if (partes.length < 1) {
-                    System.err.println("Error línea " + numLinea + ": falta ':' -> " + linea);
+                    System.err.println("⚠️ Error línea " + numLinea + ": falta ':' -> " + linea);
                     continue;
                 }
 
                 String tarea = partes[0].trim();
                 if (tarea.isEmpty()) {
-                    System.err.println("Error línea " + numLinea + ": tarea vacía antes de ':'");
+                    System.err.println("⚠️ Error línea " + numLinea + ": tarea vacía antes de ':'");
                     continue;
                 }
 
-                // Registrar la tarea principal (aunque no tenga dependencias)
+                // Siempre registramos la tarea principal
                 grafo.agregarTarea(tarea);
 
-                // Procesar las dependencias si existen
+                // Si hay dependencias, las procesamos
                 if (partes.length > 1 && !partes[1].trim().isEmpty()) {
-                    // Separar por espacios (uno o más) para obtener cada dependencia
                     String[] dependencias = partes[1].trim().split("\\s+");
                     for (String dep : dependencias) {
                         dep = dep.trim();
                         if (!dep.isEmpty()) {
+                            // Detectar auto-dependencia y mostrar advertencia
+                            if (dep.equals(tarea)) {
+                                System.err.println("⚠️ Auto-dependencia detectada en línea " + numLinea + 
+                                ": " + tarea + " depende de sí misma.");
+                            }
                             grafo.agregarDependencia(tarea, dep);
                         }
                     }
                 }
             }
         } finally {
-            // Asegurar el cierre del recurso, incluso si ocurre una excepción
+            // Asegurar el cierre del archivo, incluso si hay excepción
             if (lector != null) {
                 try {
                     lector.close();

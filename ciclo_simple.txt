@@ -1,2 +1,3 @@
+# Ciclo simple: A depende de B, B depende de A
 A: B
 B: A

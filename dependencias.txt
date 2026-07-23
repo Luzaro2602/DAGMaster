@@ -1,3 +1,4 @@
+# Archivo con ciclo: compilar -> guardar -> compilar
 compilar: editar guardar
 ejecutar: compilar
 editar:

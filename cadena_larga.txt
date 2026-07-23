@@ -1,0 +1,7 @@
+# Cadena larga: A depende de B, B de C, ... hasta F que no tiene dependencias
+A: B
+B: C
+C: D
+D: E
+E: F
+F:

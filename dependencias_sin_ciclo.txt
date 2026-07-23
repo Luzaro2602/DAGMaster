@@ -1,6 +1,10 @@
+# Archivo de prueba sin ciclos
+# Formato: tarea: dependencia1 dependencia2 ...
+# Las líneas que empiezan con # son comentarios y se ignoran.
+
 compilar: editar guardar
 ejecutar: compilar
 editar:
-guardar:
+guardar:          # Esta tarea no tiene dependencias
 documentar: compilar
 limpiar:

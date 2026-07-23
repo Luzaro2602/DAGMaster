@@ -1,0 +1,4 @@
+# Auto-dependencia: A depende de A (error)
+A: A B
+B: C
+C:

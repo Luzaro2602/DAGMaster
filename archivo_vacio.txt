@@ -1,0 +1,4 @@
+# Este archivo solo tiene comentarios y líneas vacías
+# No debería generar errores, solo mostrar 0 tareas.
+
+# Línea vacía a continuación:

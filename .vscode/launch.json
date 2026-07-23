@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch InterfazDagmaster",
+            "request": "launch",
+            "mainClass": "InterfazDagmaster",
+            "vmArgs": "--module-path \"C:\\Users\\House\\Desktop\\java\\javafx-sdk-21.0.12\\lib\" --add-modules javafx.controls,javafx.fxml"
+        }
+    ]
+}
+  

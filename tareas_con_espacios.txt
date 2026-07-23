@@ -1,0 +1,5 @@
+# Tareas con espacios en el nombre (soportado por el programa)
+Tarea Principal: Subtarea 1, Subtarea 2
+Subtarea 1:
+Subtarea 2: Subtarea 3
+Subtarea 3:

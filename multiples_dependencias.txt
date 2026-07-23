@@ -1,0 +1,11 @@
+# Archivo con tareas que tienen muchas dependencias
+frontend: html css javascript
+backend: java spring mysql
+despliegue: frontend backend pruebas
+pruebas: frontend backend
+html:
+css:
+javascript:
+java:
+spring:
+mysql:

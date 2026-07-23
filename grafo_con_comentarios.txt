@@ -1,0 +1,21 @@
+# Este archivo prueba comentarios y líneas vacías
+
+# Tarea principal
+compilar: editar guardar
+
+# Tarea que depende de compilar
+ejecutar: compilar
+
+# Tarea sin dependencias
+editar:
+
+# Otra tarea sin dependencias (con comentario inline)
+guardar:          # Esto es un comentario después de la línea
+
+# Documentar depende de compilar
+documentar: compilar
+
+# Limpiar no tiene dependencias
+limpiar:
+
+# Línea vacía intencional (debe ignorarse)
