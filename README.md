@@ -273,6 +273,6 @@ Contacto
 
     Rodolfo Castro: rodolfocastro1106@gmail.com
 
-    Angel Tomasini: angel.tomasini@gmail.com
+    Angel Tomasini: toangel.08@gmail.com
 
 ¡DAGmaster – Dependencias resueltas, orden garantizado! 
